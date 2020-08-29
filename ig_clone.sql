@@ -7,3 +7,12 @@ CREATE TABLE users
     username VARCHAR(255) UNIQUE,
     created_at TIMESTAMP DEFAULT NOW()
 );
+
+CREATE TABLE photos
+(
+    id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    image_url VARCHAR(255) NOT NULL,
+    user_id INTEGER NOT NULL,
+    created_at TIMESTAMP DEFAULT NOW(),
+    FOREIGN KEY(user_id) REFERENCES users(id)
+);
