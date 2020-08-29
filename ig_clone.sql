@@ -37,3 +37,13 @@ CREATE TABLE likes
     FOREIGN KEY(photo_id) REFERENCES photos(id),
     PRIMARY KEY(user_id, photo_id)
 );
+
+CREATE TABLE followers
+(
+    follower_id INTEGER NOT NULL,
+    following_id INTEGER NOT NULL,
+    created_at TIMESTAMP DEFAULT NOW(),
+    FOREIGN KEY(follower_id) REFERENCES users(id),
+    FOREIGN KEY(following_id) REFERENCES users(id),
+    PRIMARY KEY(follower_id, following_id)
+);
