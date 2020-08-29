@@ -33,9 +33,16 @@ USE ig_clone;
 # Most likes on a single photo
 ###############################
 
-SELECT username, photos.id, photos.image_url, COUNT(*) as total FROM photos
-INNER JOIN likes ON likes.photo_id = photos.id
-INNER JOIN users ON photos.user_id = users.id
-GROUP BY photos.id
-ORDER BY total DESC
-LIMIT 1;
+-- SELECT username, photos.id, photos.image_url, COUNT(*) as total FROM photos
+-- INNER JOIN likes ON likes.photo_id = photos.id
+-- INNER JOIN users ON photos.user_id = users.id
+-- GROUP BY photos.id
+-- ORDER BY total DESC
+-- LIMIT 1;
+
+###############################
+# Challenge 5
+# How many times does the average user post
+###############################
+
+SELECT (SELECT Count(*) FROM photos) / (SELECT Count(*) FROM users) AS avg; 
