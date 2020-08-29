@@ -52,8 +52,18 @@ USE ig_clone;
 # What are the top 5 used hashtags
 ###############################
 
-SELECT tags.tag_name, Count(*) AS total FROM photo_tags 
-JOIN tags ON photo_tags.tag_id = tags.id 
-GROUP  BY tags.id 
-ORDER  BY total DESC 
-LIMIT  5; 
+-- SELECT tags.tag_name, Count(*) AS total FROM photo_tags 
+-- JOIN tags ON photo_tags.tag_id = tags.id 
+-- GROUP  BY tags.id 
+-- ORDER  BY total DESC 
+-- LIMIT  5; 
+
+###############################
+# Challenge 7
+# Find users who liked every photo on the site
+###############################
+
+SELECT username, COUNT(*) as total FROM users 
+INNER JOIN likes ON users.id = likes.user_id
+GROUP BY likes.user_id
+HAVING total = (SELECT COUNT(*) FROM photos);
