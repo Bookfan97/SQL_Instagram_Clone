@@ -14,7 +14,16 @@ USE ig_clone;
 # What day of the week do most people register?
 ###############################
 
-SELECT DAYNAME(created_at) as day, COUNT(*) as total FROM users
-GROUP BY day
-ORDER BY total DESC
-LIMIT 2;
+-- SELECT DAYNAME(created_at) as day, COUNT(*) as total FROM users
+-- GROUP BY day
+-- ORDER BY total DESC
+-- LIMIT 2;
+
+###############################
+# Challenge 3
+# Find the users who have not posted a photo
+###############################
+
+SELECT username from users
+LEFT JOIN photos ON users.id = photos.user_id
+WHERE photos.id IS NULL;
