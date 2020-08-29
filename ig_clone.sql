@@ -38,23 +38,25 @@ CREATE TABLE likes
     PRIMARY KEY(user_id, photo_id)
 );
 
-CREATE TABLE followers
+CREATE TABLE follows 
 (
     follower_id INTEGER NOT NULL,
-    following_id INTEGER NOT NULL,
+    followee_id INTEGER NOT NULL,
     created_at TIMESTAMP DEFAULT NOW(),
     FOREIGN KEY(follower_id) REFERENCES users(id),
-    FOREIGN KEY(following_id) REFERENCES users(id),
-    PRIMARY KEY(follower_id, following_id)
+    FOREIGN KEY(followee_id) REFERENCES users(id),
+    PRIMARY KEY(follower_id, followee_id)
 );
 
-CREATE TABLE tags (
+CREATE TABLE tags 
+(
   id INTEGER AUTO_INCREMENT PRIMARY KEY,
   tag_name VARCHAR(255) UNIQUE,
   created_at TIMESTAMP DEFAULT NOW()
 );
 
-CREATE TABLE photo_tags (
+CREATE TABLE photo_tags 
+(
     photo_id INTEGER NOT NULL,
     tag_id INTEGER NOT NULL,
     FOREIGN KEY(photo_id) REFERENCES photos(id),
