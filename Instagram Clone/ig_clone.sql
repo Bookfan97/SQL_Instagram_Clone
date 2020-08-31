@@ -64,6 +64,8 @@ CREATE TABLE photo_tags
     PRIMARY KEY(photo_id, tag_id)
 );
 
+############################################
+
 DELIMITER $$
 
 CREATE TRIGGER prevent_self_follow
